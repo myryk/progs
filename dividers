@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Dividers {
+    public static void main (String [] args) {
+        Scanner keyboard = new Scanner (System.in);
+        int number = keyboard.nextInt();
+        int divider_count = 1;;
+        for (int divider = 1; divider != number; divider++ ) {
+            if ((number % divider) == 0 ) divider_count++;
+        }
+        System.out.println(divider_count);
+    }
+}
