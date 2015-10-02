@@ -1,0 +1,48 @@
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class File {
+    public static void main (String [] args) {
+        try {
+            BufferedReader file_in = new BufferedReader (new FileReader("E:\\ITS\\Java\\File\\src\\INPUT.txt"));
+            BufferedWriter file_out = new  BufferedWriter(new FileWriter("E:\\ITS\\Java\\File\\src\\OUTPUT.txt",false));
+            String string = file_in.readLine();
+            char [] line = string.toCharArray();
+            int [] masiv = new int[100];
+            int count = 0;
+            int j = 0;
+            int max = masiv[0];
+            for (int i = 0; i < line.length; i++) {
+                if (line[i] == '1') {
+                    count++;
+                } else {
+                    masiv[j] = count;
+                    count = 0;
+                    j++;
+                }
+            }
+            for(int i = 0; i < j; i++)
+            {
+                if (masiv[i] > max)
+                    max = masiv[i];
+            }
+            try {
+                file_out.write(Integer.toString(max));
+            } finally {
+                file_out.close();
+            }
+        }catch(FileNotFoundException ex) {
+            System.out.println(ex);
+        }catch (IOException ex){
+            System.out.println(ex);
+        }catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex);
+        }
+
+}
+}
